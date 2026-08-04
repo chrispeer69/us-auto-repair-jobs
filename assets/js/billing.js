@@ -1,5 +1,5 @@
 /* ============================================================
-   WRENCHLINK — billing & invoicing engine
+   US AUTO REPAIR JOBS — billing & invoicing engine
    Recurring monthly subscriptions, invoice accrual, payment state.
    Data lives on WL store (per-account): user.subscription,
    user.invoices, user.paymentMethod, plus a demo billing clock.
@@ -7,9 +7,8 @@
 
 const BILLING_PLANS = {
   tech:       { id: 'tech',       name: 'Solo',       audience: 'tech',     price: 9.95, blurb: 'Full technician access' },
-  starter:    { id: 'starter',    name: 'Starter',    audience: 'employer', price: 99,   blurb: '2 active postings' },
-  pro:        { id: 'pro',        name: 'Pro',        audience: 'employer', price: 249,  blurb: '10 active postings' },
-  enterprise: { id: 'enterprise', name: 'Enterprise', audience: 'employer', price: 1200, blurb: 'Unlimited + ATS' },
+  shop:       { id: 'shop',       name: 'Shop',       audience: 'employer', price: 349,  blurb: 'Unlimited postings, flat rate' },
+  enterprise: { id: 'enterprise', name: 'Enterprise', audience: 'employer', price: 1200, blurb: 'Multi-location + ATS' },
 };
 
 const Billing = {
@@ -32,8 +31,9 @@ const Billing = {
   planForUser(u) {
     if (!u) return null;
     if (u.type === 'tech') return BILLING_PLANS.tech;
-    const map = { Solo: 'tech', Starter: 'starter', Pro: 'pro', Enterprise: 'enterprise' };
-    return BILLING_PLANS[map[u.plan]] || BILLING_PLANS.pro;
+    // Map current + legacy employer plan labels to the unified Shop plan
+    const map = { Solo: 'tech', Shop: 'shop', Starter: 'shop', Pro: 'shop', Enterprise: 'enterprise' };
+    return BILLING_PLANS[map[u.plan]] || BILLING_PLANS.shop;
   },
 
   sub() {
@@ -89,7 +89,7 @@ const Billing = {
         const seq = invs.length + 1;
         const paid = !!u.paymentMethod;
         invs.push({
-          id: 'WL-' + cursor.getFullYear() + '-' + String(seq).padStart(4, '0'),
+          id: 'USJ-' + cursor.getFullYear() + '-' + String(seq).padStart(4, '0'),
           periodKey: key,
           date: this.iso(cursor),
           periodStart: this.iso(cursor),
@@ -165,7 +165,7 @@ const Billing = {
       const due = opts.status === 'past_due' && cursor > this.addMonths(now, -1); // most recent unpaid if past_due
       const paid = hasCard && !due;
       out.push({
-        id: 'WL-' + cursor.getFullYear() + '-' + String(seq).padStart(4, '0'),
+        id: 'USJ-' + cursor.getFullYear() + '-' + String(seq).padStart(4, '0'),
         date: this.iso(cursor),
         periodStart: this.iso(cursor),
         periodEnd: this.iso(this.addMonths(cursor, 1)),

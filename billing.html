@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Billing & Invoices — WrenchLink</title>
+<title>Billing & Invoices — US Auto Repair Jobs</title>
 <link rel="icon" href="assets/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -208,8 +208,8 @@ function viewInvoice(id){
   document.getElementById('inv-modal-body').innerHTML = `
     <div id="inv-print" style="background:#fff;color:#1b2230;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;">
-        <div><div style="font-size:1.3rem;font-weight:800;color:var(--primary);">WRENCH<span style="color:var(--accent);">LINK</span></div>
-        <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">WrenchLink, Inc.<br>1 Industry Way, Columbus, OH 43215<br>billing@wrenchlink.io</div></div>
+        <div><div style="font-size:1.3rem;font-weight:800;color:var(--primary);">US Auto Repair <span style="color:var(--accent);">Jobs</span></div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">US Auto Repair Jobs, Inc.<br>1 Industry Way, Columbus, OH 43215<br>billing@usautorepairjobs.com</div></div>
         <div style="text-align:right;"><div style="font-weight:700;font-size:1.05rem;">Invoice</div>
         <div style="font-size:0.82rem;color:var(--muted);">${i.id}</div>
         <div style="margin-top:0.4rem;"><span class="badge ${i.status==='paid'?'green':'yellow'}">${i.status==='paid'?'Paid':'Due'}</span></div></div>
@@ -222,7 +222,7 @@ function viewInvoice(id){
       <table class="data-table" style="margin-top:1.25rem;"><thead><tr><th>Description</th><th style="text-align:right;">Amount</th></tr></thead>
         <tbody><tr><td>${escapeHtml(i.description)}</td><td style="text-align:right;">${Billing.money(i.amount)}</td></tr>
         <tr><td style="text-align:right;font-weight:700;color:var(--text);">Total</td><td style="text-align:right;font-weight:800;color:var(--primary);">${Billing.money(i.amount)}</td></tr></tbody></table>
-      <p style="font-size:0.76rem;color:var(--muted);margin-top:1rem;">${i.status==='paid'?('Paid '+Billing.fmtDate(i.paidDate)+'. Thank you.'):'Payment due on receipt.'} Questions? billing@wrenchlink.io</p>
+      <p style="font-size:0.76rem;color:var(--muted);margin-top:1rem;">${i.status==='paid'?('Paid '+Billing.fmtDate(i.paidDate)+'. Thank you.'):'Payment due on receipt.'} Questions? billing@usautorepairjobs.com</p>
     </div>
     <button class="btn-sm" style="margin-top:1rem;" onclick="printInvoice()">${iconSvg('arrow')} Print / Save PDF</button>`;
   document.getElementById('inv-modal').classList.add('open');
@@ -232,7 +232,7 @@ function closeInv(){ document.getElementById('inv-modal').classList.remove('open
 function printInvoice(){
   const html = document.getElementById('inv-print').innerHTML;
   const w = window.open('', '_blank', 'width=720,height=900');
-  w.document.write('<html><head><title>WrenchLink Invoice</title><style>body{font-family:Inter,Arial,sans-serif;padding:40px;color:#1b2230;}table{width:100%;border-collapse:collapse;margin-top:16px;}th,td{padding:8px;border-bottom:1px solid #e4e7ec;text-align:left;font-size:14px;}.badge{padding:2px 8px;border-radius:20px;font-size:12px;font-weight:600;}.green{background:#e6f4ec;color:#15915b;}.yellow{background:#fbf1dc;color:#c8810a;}</style></head><body>'+html+'</body></html>');
+  w.document.write('<html><head><title>US Auto Repair Jobs Invoice</title><style>body{font-family:Inter,Arial,sans-serif;padding:40px;color:#1b2230;}table{width:100%;border-collapse:collapse;margin-top:16px;}th,td{padding:8px;border-bottom:1px solid #e4e7ec;text-align:left;font-size:14px;}.badge{padding:2px 8px;border-radius:20px;font-size:12px;font-weight:600;}.green{background:#e6f4ec;color:#15915b;}.yellow{background:#fbf1dc;color:#c8810a;}</style></head><body>'+html+'</body></html>');
   w.document.close(); w.focus(); setTimeout(()=>w.print(), 300);
 }
 </script>

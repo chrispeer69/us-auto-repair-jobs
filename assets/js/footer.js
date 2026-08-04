@@ -6,7 +6,7 @@ function renderFooter() {
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">WRENCH<span>LINK</span></a>
+        <a href="index.html" class="logo">US Auto Repair <span>Jobs</span></a>
         <p>Where automotive talent meets opportunity. The trade deserves a platform built for the trade.</p>
       </div>
       <div class="footer-col">
@@ -33,7 +33,7 @@ function renderFooter() {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 WrenchLink, Inc. All rights reserved.</p>
+      <p>© 2026 US Auto Repair Jobs, Inc. All rights reserved.</p>
       <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
         <a href="legal.html#terms" style="font-size:0.8rem;color:var(--muted);text-decoration:none;">Terms</a>
         <a href="legal.html#privacy" style="font-size:0.8rem;color:var(--muted);text-decoration:none;">Privacy</a>

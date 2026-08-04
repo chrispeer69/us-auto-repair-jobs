@@ -1,8 +1,8 @@
 {
-  "name": "wrenchlink",
+  "name": "us-auto-repair-jobs",
   "version": "1.0.0",
   "private": true,
-  "description": "WrenchLink — where automotive talent meets opportunity. Job platform for auto repair & body shop technicians and the shops hiring them.",
+  "description": "US Auto Repair Jobs — where automotive talent meets opportunity. Job platform for auto repair & body shop technicians and the shops hiring them.",
   "scripts": {
     "start": "node server.js"
   },

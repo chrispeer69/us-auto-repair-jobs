@@ -1,4 +1,4 @@
-/* Minimal zero-dependency static file server for WrenchLink.
+/* Minimal zero-dependency static file server for US Auto Repair Jobs.
    Used by Railway / any Node host. Serves the current directory. */
 const http = require('http');
 const fs = require('fs');
@@ -58,4 +58,4 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => console.log('WrenchLink running on port ' + PORT));
+server.listen(PORT, () => console.log('US Auto Repair Jobs running on port ' + PORT));

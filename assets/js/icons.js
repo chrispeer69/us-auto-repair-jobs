@@ -1,5 +1,5 @@
 /* ============================================================
-   WRENCHLINK — inline SVG icon set (replaces emoji)
+   US AUTO REPAIR JOBS — inline SVG icon set (replaces emoji)
    Stroke-based, 1.5 weight, inherits currentColor.
    Usage: icon('wrench')  ->  <span class="ic">…</span>
    ============================================================ */

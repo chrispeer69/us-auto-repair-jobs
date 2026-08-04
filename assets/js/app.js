@@ -1,5 +1,5 @@
 /* ============================================================
-   WRENCHLINK — shared app logic
+   US AUTO REPAIR JOBS — shared app logic
    nav state, auth modal, toast, route guards
    ============================================================ */
 
@@ -14,9 +14,9 @@ function wlDemoDate(monthsAgo) {
   return d.toISOString().slice(0, 10);
 }
 function wlMakeDemo(role) {
-  if (role === 'tech') return { type:'tech', name:'Marcus Thompson', email:'marcus@demo.wrenchlink.io', metro:'Columbus', specialty:'Master Auto Technician', plan:'Solo', price:9.95, joined: wlDemoDate(4) };
-  if (role === 'employer') return { type:'employer', name:'Apex Body & Auto', company:'Apex Body & Auto', shoptype:'Auto Body / Collision Shop', email:'hiring@apex.demo.io', metro:'Columbus', plan:'Pro', joined: wlDemoDate(4) };
-  return { type:'admin', name:'Platform Admin', email:'admin@wrenchlink.io' };
+  if (role === 'tech') return { type:'tech', name:'Marcus Thompson', email:'marcus@demo.usautorepairjobs.com', metro:'Columbus', specialty:'Master Auto Technician', plan:'Solo', price:9.95, joined: wlDemoDate(4) };
+  if (role === 'employer') return { type:'employer', name:'Apex Body & Auto', company:'Apex Body & Auto', shoptype:'Auto Body / Collision Shop', email:'hiring@apex.demo.io', metro:'Columbus', plan:'Shop', joined: wlDemoDate(4) };
+  return { type:'admin', name:'Platform Admin', email:'admin@usautorepairjobs.com' };
 }
 // ensure a demo identity of the given role exists & is active (persists edits per role)
 function wlDevEnsure(role) {
@@ -147,12 +147,12 @@ function wlLogin(e) {
   const f = e.target;
   const role = f.role.value;
   // Admin shortcut
-  if (f.email.value.trim().toLowerCase() === 'admin@wrenchlink.io') {
+  if (f.email.value.trim().toLowerCase() === 'admin@usautorepairjobs.com') {
     WL.set({ user: { type: 'admin', name: 'Platform Admin', email: f.email.value } });
     closeModal(); window.location.href = 'admin.html'; return false;
   }
   if (role === 'employer') {
-    WL.set({ user: { type: 'employer', name: WL.get().user?.company || 'Your Shop', company: WL.get().user?.company || 'Your Shop', email: f.email.value, metro: WL.get().user?.metro || 'Columbus', plan: WL.get().user?.plan || 'Pro' } });
+    WL.set({ user: { type: 'employer', name: WL.get().user?.company || 'Your Shop', company: WL.get().user?.company || 'Your Shop', email: f.email.value, metro: WL.get().user?.metro || 'Columbus', plan: WL.get().user?.plan || 'Shop' } });
     closeModal(); window.location.href = 'employer.html'; return false;
   }
   WL.set({ user: { type: 'tech', name: WL.get().user?.name || 'Marcus Thompson', email: f.email.value, metro: WL.get().user?.metro || 'Columbus', specialty: WL.get().user?.specialty || 'Master Auto Technician' } });
@@ -173,7 +173,7 @@ function wlRegisterTech(e) {
     price: 9.95,
   }});
   closeModal();
-  showToast('Profile created! Welcome to WrenchLink.');
+  showToast('Profile created! Welcome to US Auto Repair Jobs.');
   setTimeout(() => window.location.href = 'vault.html', 700);
   return false;
 }
@@ -189,7 +189,7 @@ function wlRegisterEmployer(e) {
     email: f.email.value,
     metro: f.metro.value,
     joined: new Date().toISOString().slice(0,10),
-    plan: 'Pro',
+    plan: 'Shop',
   }});
   closeModal();
   showToast('Employer account created! Set up your shop.');
@@ -234,7 +234,7 @@ function renderNav(active) {
 
   const nav = document.createElement('nav');
   nav.innerHTML = `
-    <a href="index.html" class="logo">WRENCH<span>LINK</span></a>
+    <a href="index.html" class="logo">US Auto Repair <span>Jobs</span></a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">☰</button>
     <div class="nav-links">${linkHtml}</div>
     <div class="nav-ctas">${ctas}</div>`;
@@ -300,7 +300,7 @@ function wlCookieBanner() {
   el.className = 'cookie-banner';
   el.id = 'cookie-banner';
   el.innerHTML = `
-    <p>We use cookies and local storage to keep you signed in, remember your preferences, and improve WrenchLink. See our <a class="link-accent" href="legal.html#cookies">Cookie Policy</a>.</p>
+    <p>We use cookies and local storage to keep you signed in, remember your preferences, and improve US Auto Repair Jobs. See our <a class="link-accent" href="legal.html#cookies">Cookie Policy</a>.</p>
     <div class="actions">
       <button class="btn-sm ghost" onclick="wlSetConsent('necessary')">Necessary only</button>
       <button class="btn-sm" onclick="wlSetConsent('all')">Accept all</button>

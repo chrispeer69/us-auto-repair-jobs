@@ -1,4 +1,4 @@
-# WrenchLink
+# US Auto Repair Jobs
 
 **Where Automotive Talent Meets Opportunity** — a job platform for auto repair & auto body technicians and the shops that hire them. An Indeed alternative built specifically for the trade.
 
@@ -12,7 +12,7 @@ npm start
 
 …then open **http://localhost:8080**.
 
-Or with Python: `python -m http.server 8080`. Or double-click **`START-WRENCHLINK.bat`** on Windows.
+Or with Python: `python -m http.server 8080`. Or double-click **`START-US-AUTO-REPAIR-JOBS.bat`** on Windows.
 
 > 100% static front end (HTML/CSS/JS). Accounts, jobs, applications, subscriptions, and invoices are stored in your browser's `localStorage`, so it's fully interactive with no database. Clearing site data resets the demo.
 
@@ -49,7 +49,7 @@ On Railway: **New Project → Deploy from GitHub → chrispeer69/Wrenchlink**. N
 
 - **Technician** — *Get Started → Tech* (or Sign In as Technician) → lands in **My Vault**.
 - **Employer** — *Get Started → Employer* → **Employer Dashboard**.
-- **Admin** — Sign In with **`admin@wrenchlink.io`** → **Admin Console**.
+- **Admin** — Sign In with **`admin@usautorepairjobs.com`** → **Admin Console**.
 
 ## Structure
 

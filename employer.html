@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employer Dashboard — WrenchLink</title>
+<title>Employer Dashboard — US Auto Repair Jobs</title>
 <link rel="icon" href="assets/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -87,7 +87,7 @@ function renderStats() {
     <div class="dash-stat"><div class="num">${12 + mine*3}</div><div class="lbl">Applicants</div></div>
     <div class="dash-stat"><div class="num">${s.contacted.length}</div><div class="lbl">Candidates Contacted</div></div>
     <div class="dash-stat"><div class="num">${WL.candidates().filter(c=>c.metro===biz().metro).length}</div><div class="lbl">Techs In Your Pool</div></div>`;
-  document.getElementById('emp-plan-badge').textContent = s.user.plan || 'Pro';
+  document.getElementById('emp-plan-badge').textContent = s.user.plan || 'Shop';
   document.getElementById('emp-sub').textContent = `${biz().company} · ${biz().metro} City Pool`;
 }
 
