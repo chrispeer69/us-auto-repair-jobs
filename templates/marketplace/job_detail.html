@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ job.title }} — WrenchLink{% endblock %}
+{% block title %}{{ job.title }} — US Auto Repair Jobs{% endblock %}
 {% block content %}
 <div class="page job-detail-page">
   <a class="back-link" href="{% url 'jobs' %}">← Back to jobs</a>
@@ -21,7 +21,7 @@
     <aside class="job-apply-card panel">
       <span class="badge green">Accepting applications</span>
       <h2>Interested in this role?</h2>
-      <p>Your WrenchLink Vault profile is used for the application.</p>
+      <p>Your US Auto Repair Jobs Vault profile is used for the application.</p>
       {% if request.user.role == 'technician' %}
         {% if application %}<a class="btn-primary full-button" href="{% url 'application_detail' application.id %}">View application</a>{% else %}<form method="post" action="{% url 'apply_job' job.id %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.path }}"><button class="btn-primary full-button" type="submit">Apply now</button></form>{% endif %}
         <form method="post" action="{% url 'save_job' job.id %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.path }}"><button class="btn-sm ghost full-button" type="submit">{% if is_saved %}Remove saved job{% else %}Save for later{% endif %}</button></form>

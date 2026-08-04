@@ -72,8 +72,8 @@ def _notify(user, event, title, body, link=""):
         )
     if user.email and email_enabled:
         send_mail(
-            f"WrenchLink: {title[:120]}",
-            f"{body[:600]}\n\nSign in to WrenchLink to review this update.",
+            f"US Auto Repair Jobs: {title[:120]}",
+            f"{body[:600]}\n\nSign in to US Auto Repair Jobs to review this update.",
             settings.DEFAULT_FROM_EMAIL,
             [user.email],
             fail_silently=True,

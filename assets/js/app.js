@@ -1,5 +1,5 @@
 /* ============================================================
-   WRENCHLINK — shared app logic
+   US AUTO REPAIR JOBS — shared app logic
    nav state, auth modal, toast, route guards
    ============================================================ */
 
@@ -14,9 +14,9 @@ function wlDemoDate(monthsAgo) {
   return d.toISOString().slice(0, 10);
 }
 function wlMakeDemo(role) {
-  if (role === 'tech') return { type:'tech', name:'Marcus Thompson', email:'marcus@demo.wrenchlink.io', metro:'Columbus', specialty:'Master Auto Technician', plan:'Solo', price:9.95, joined: wlDemoDate(4) };
+  if (role === 'tech') return { type:'tech', name:'Marcus Thompson', email:'marcus@demo.usautorepairjobs.com', metro:'Columbus', specialty:'Master Auto Technician', plan:'Solo', price:9.95, joined: wlDemoDate(4) };
   if (role === 'employer') return { type:'employer', name:'Apex Body & Auto', company:'Apex Body & Auto', shoptype:'Auto Body / Collision Shop', email:'hiring@apex.demo.io', metro:'Columbus', plan:'Pro', joined: wlDemoDate(4) };
-  return { type:'admin', name:'Platform Admin', email:'admin@wrenchlink.io' };
+  return { type:'admin', name:'Platform Admin', email:'admin@usautorepairjobs.com' };
 }
 // ensure a demo identity of the given role exists & is active (persists edits per role)
 function wlDevEnsure(role) {
@@ -147,7 +147,7 @@ function wlLogin(e) {
   const f = e.target;
   const role = f.role.value;
   // Admin shortcut
-  if (f.email.value.trim().toLowerCase() === 'admin@wrenchlink.io') {
+  if (f.email.value.trim().toLowerCase() === 'admin@usautorepairjobs.com') {
     WL.set({ user: { type: 'admin', name: 'Platform Admin', email: f.email.value } });
     closeModal(); window.location.href = 'admin.html'; return false;
   }
@@ -173,7 +173,7 @@ function wlRegisterTech(e) {
     price: 9.95,
   }});
   closeModal();
-  showToast('Profile created! Welcome to WrenchLink.');
+  showToast('Profile created! Welcome to US Auto Repair Jobs.');
   setTimeout(() => window.location.href = 'vault.html', 700);
   return false;
 }
@@ -300,7 +300,7 @@ function wlCookieBanner() {
   el.className = 'cookie-banner';
   el.id = 'cookie-banner';
   el.innerHTML = `
-    <p>We use cookies and local storage to keep you signed in, remember your preferences, and improve WrenchLink. See our <a class="link-accent" href="legal.html#cookies">Cookie Policy</a>.</p>
+    <p>We use cookies and local storage to keep you signed in, remember your preferences, and improve US Auto Repair Jobs. See our <a class="link-accent" href="legal.html#cookies">Cookie Policy</a>.</p>
     <div class="actions">
       <button class="btn-sm ghost" onclick="wlSetConsent('necessary')">Necessary only</button>
       <button class="btn-sm" onclick="wlSetConsent('all')">Accept all</button>

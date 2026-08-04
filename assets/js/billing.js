@@ -1,5 +1,5 @@
 /* ============================================================
-   WRENCHLINK — billing & invoicing engine
+   US AUTO REPAIR JOBS — billing & invoicing engine
    Recurring monthly subscriptions, invoice accrual, payment state.
    Data lives on WL store (per-account): user.subscription,
    user.invoices, user.paymentMethod, plus a demo billing clock.

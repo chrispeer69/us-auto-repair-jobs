@@ -11,10 +11,10 @@ class WrenchLinkUserAdmin(UserAdmin):
     search_fields = ("email", "first_name", "last_name")
     ordering = ("email",)
     fieldsets = UserAdmin.fieldsets + (
-        ("WrenchLink", {"fields": ("role", "email_verified")}),
+        ("US Auto Repair Jobs", {"fields": ("role", "email_verified")}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
-        ("WrenchLink", {"fields": ("email", "role", "first_name", "last_name")}),
+        ("US Auto Repair Jobs", {"fields": ("email", "role", "first_name", "last_name")}),
     )
 
 

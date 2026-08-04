@@ -1,12 +1,12 @@
-# WrenchLink Architecture and Engineering Handoff
+# US Auto Repair Jobs Architecture and Engineering Handoff
 
 This document is the primary technical handoff for developers and AI coding
-agents continuing work on WrenchLink. Read it together with `README.md`,
+agents continuing work on US Auto Repair Jobs. Read it together with `README.md`,
 `.env.example`, and the current migrations before changing the application.
 
 ## 1. Product summary
 
-WrenchLink is a server-rendered automotive talent marketplace. It connects:
+US Auto Repair Jobs is a server-rendered automotive talent marketplace. It connects:
 
 - automotive technicians who maintain a reusable professional profile ("Vault");
 - employers such as repair shops, collision centers, dealerships, and fleets;
@@ -20,8 +20,8 @@ operations.
 The production domain is intended to be:
 
 ```text
-https://wrenchlink.online
-https://www.wrenchlink.online
+https://usautorepairjobs.com
+https://www.usautorepairjobs.com
 ```
 
 ## 2. Current implementation status
@@ -87,7 +87,7 @@ Dependencies are declared in `requirements.txt`.
 ## 4. Repository layout
 
 ```text
-Wrenchlink/
+us-auto-repair-jobs/
 ├── accounts/                 # users, auth, registration, staff operations
 │   ├── models.py             # User and ModerationAction
 │   ├── forms.py              # login and registration forms
@@ -512,7 +512,7 @@ The site is server-rendered.
 
 Design constraints established during development:
 
-- retain WrenchLink navy/orange/cream brand colors;
+- retain US Auto Repair Jobs navy/orange/cream brand colors;
 - avoid browser-default/select styling;
 - avoid underlined button-like links;
 - dashboards use tabs rather than one long page;
@@ -523,7 +523,7 @@ Design constraints established during development:
 The hero asset is:
 
 ```text
-assets/img/wrenchlink-hero-platform.png
+assets/img/us-auto-repair-jobs-hero-platform.png
 ```
 
 It is an RGBA transparent illustration. Do not replace it with an opaque white
@@ -785,7 +785,7 @@ Prioritized candidates:
 
 ## 18. Twilio/SMS note
 
-Twilio is not installed and SMS is not currently sent by WrenchLink.
+Twilio is not installed and SMS is not currently sent by US Auto Repair Jobs.
 
 If one-to-one requested SMS is added later, it still requires a deliberate
 compliance design for US application-originated messaging. Do not merely add a

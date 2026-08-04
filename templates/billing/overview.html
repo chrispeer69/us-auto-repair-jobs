@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Billing & Invoices — WrenchLink{% endblock %}
+{% block title %}Billing & Invoices — US Auto Repair Jobs{% endblock %}
 {% block content %}
 <div class="page">
   <div class="page-head"><div class="section-tag">Account</div><h1>Billing &amp; <em>invoices</em></h1><p>Manage your subscription, payment method, plan, and invoice history.</p></div>
@@ -20,7 +20,7 @@
       </div>
       <div class="panel" id="payment">
         <div class="panel-head"><h2>Payment method</h2>{% if subscription.stripe_customer_id %}<form method="post" action="{% url 'billing:portal' %}">{% csrf_token %}<button class="btn-sm ghost">Update</button></form>{% endif %}</div>
-        {% if subscription.stripe_customer_id %}<p style="color:var(--text-dim);">Payment details are stored securely by Stripe. WrenchLink does not store full card numbers.</p>{% else %}<div class="empty-state"><h3>No payment method</h3><p>A payment method will be added securely during Stripe checkout.</p></div>{% endif %}
+        {% if subscription.stripe_customer_id %}<p style="color:var(--text-dim);">Payment details are stored securely by Stripe. US Auto Repair Jobs does not store full card numbers.</p>{% else %}<div class="empty-state"><h3>No payment method</h3><p>A payment method will be added securely during Stripe checkout.</p></div>{% endif %}
       </div>
       <div class="panel" id="invoices">
         <div class="panel-head"><h2>Invoice history</h2><span style="font-size:.82rem;color:var(--muted);">{{ invoices|length }} invoice{{ invoices|length|pluralize }}</span></div>

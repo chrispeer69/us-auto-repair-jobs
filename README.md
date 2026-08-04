@@ -1,8 +1,8 @@
-# WrenchLink
+# US Auto Repair Jobs
 
-WrenchLink is a Django marketplace connecting automotive technicians with repair shops, collision centers, dealerships and fleet employers.
+US Auto Repair Jobs is a Django marketplace connecting automotive technicians with repair shops, collision centers, dealerships and fleet employers.
 
-The Django application preserves the original WrenchLink HTML/CSS design while replacing browser-only demo storage with real authentication, PostgreSQL-backed records, protected uploads and Stripe billing records.
+The Django application preserves the original US Auto Repair Jobs HTML/CSS design while replacing browser-only demo storage with real authentication, PostgreSQL-backed records, protected uploads and Stripe billing records.
 
 For a detailed engineering handoff covering architecture, models, workflows,
 security, deployment, implemented features, known limitations, and safe extension
@@ -52,14 +52,14 @@ python manage.py runserver
 Open `http://localhost:8000`.
 
 `seed_demo_data` is optional and intended only for local/staging layout checks. It
-creates the original WrenchLink-style cities, jobs, shops and technicians and is
+creates the original US Auto Repair Jobs-style cities, jobs, shops and technicians and is
 safe to run repeatedly. It refuses to run when `DJANGO_DEBUG=False`.
 
 Demo logins:
 
 ```text
-Technician: marcus@demo.wrenchlink.io / WrenchLinkDemo!2026
-Employer: hiring@apex.demo.io / WrenchLinkDemo!2026
+Technician: marcus@demo.usautorepairjobs.com / USAutoRepairJobsDemo!2026
+Employer: hiring@apex.demo.io / USAutoRepairJobsDemo!2026
 ```
 
 The command does not modify or replace your superuser.
@@ -96,16 +96,16 @@ Required application variables:
 DJANGO_SECRET_KEY=<unique per environment>
 DJANGO_DEBUG=False
 DJANGO_ADMIN_URL=<long random path unique per environment>
-DJANGO_ALLOWED_HOSTS=${{RAILWAY_PUBLIC_DOMAIN}},wrenchlink.online,www.wrenchlink.online
-DJANGO_CSRF_TRUSTED_ORIGINS=https://${{RAILWAY_PUBLIC_DOMAIN}},https://wrenchlink.online,https://www.wrenchlink.online
+DJANGO_ALLOWED_HOSTS=${{RAILWAY_PUBLIC_DOMAIN}},usautorepairjobs.com,www.usautorepairjobs.com
+DJANGO_CSRF_TRUSTED_ORIGINS=https://${{RAILWAY_PUBLIC_DOMAIN}},https://usautorepairjobs.com,https://www.usautorepairjobs.com
 DJANGO_SECURE_SSL_REDIRECT=True
 ```
 
 For staging, use its Railway domain and optional staging subdomain instead:
 
 ```text
-DJANGO_ALLOWED_HOSTS=${{RAILWAY_PUBLIC_DOMAIN}},staging.wrenchlink.online
-DJANGO_CSRF_TRUSTED_ORIGINS=https://${{RAILWAY_PUBLIC_DOMAIN}},https://staging.wrenchlink.online
+DJANGO_ALLOWED_HOSTS=${{RAILWAY_PUBLIC_DOMAIN}},staging.usautorepairjobs.com
+DJANGO_CSRF_TRUSTED_ORIGINS=https://${{RAILWAY_PUBLIC_DOMAIN}},https://staging.usautorepairjobs.com
 ```
 
 Mail variables:
@@ -130,7 +130,7 @@ RAILWAY_VOLUME_MOUNT_PATH=/data  # automatically supplied by Railway
 ```
 
 Attach a separate Railway Volume to each environment and mount it at `/data`.
-WrenchLink will store files under `/data/media`; you do not need to define
+US Auto Repair Jobs will store files under `/data/media`; you do not need to define
 `MEDIA_ROOT` unless you want to override that location.
 Railway's normal service filesystem is ephemeral and must not hold production
 documents. The application never exposes `MEDIA_ROOT` as a public URL; downloads
@@ -176,9 +176,9 @@ Run that command separately against each environment where an administrator is r
 
 This repository is a Django monorepo. For each Railway environment, create:
 
-1. `WrenchLink Web` — GitHub-connected Django service; the only public service.
+1. `US Auto Repair Jobs Web` — GitHub-connected Django service; the only public service.
 2. `Postgres` — private PostgreSQL database service.
-3. `WrenchLink Media` — volume attached to the web service at `/data`.
+3. `US Auto Repair Jobs Media` — volume attached to the web service at `/data`.
 
 No React service, Redis, Celery worker, cron service, or Dockerfile is required
 for the current application. Email delivery is synchronous through SMTP.
@@ -198,15 +198,15 @@ database after migrations.
 
 ### GoDaddy domain
 
-The production domain is `wrenchlink.online`. Add `www.wrenchlink.online` as the
+The production domain is `usautorepairjobs.com`. Add `www.usautorepairjobs.com` as the
 Railway custom domain and copy Railway's generated CNAME and TXT verification
 records into GoDaddy DNS exactly.
 
 GoDaddy does not support the dynamic apex CNAME/ALIAS behavior Railway requires
 for a root domain. Use either:
 
-- GoDaddy domain forwarding from `wrenchlink.online` to
-  `https://www.wrenchlink.online` with a permanent redirect, or
+- GoDaddy domain forwarding from `usautorepairjobs.com` to
+  `https://www.usautorepairjobs.com` with a permanent redirect, or
 - Cloudflare DNS nameservers for the domain, then connect both the apex and `www`
   directly to Railway.
 

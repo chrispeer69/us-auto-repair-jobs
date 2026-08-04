@@ -26,11 +26,11 @@ from marketplace.models import (
 )
 
 
-DEMO_PASSWORD = "WrenchLinkDemo!2026"
+DEMO_PASSWORD = "USAutoRepairJobsDemo!2026"
 
 
 class Command(BaseCommand):
-    help = "Create idempotent WrenchLink demo data for local or staging use."
+    help = "Create idempotent US Auto Repair Jobs demo data for local or staging use."
 
     def add_arguments(self, parser):
         parser.add_argument("--force", action="store_true")
@@ -48,8 +48,8 @@ class Command(BaseCommand):
         jobs = self.create_jobs(pools, employers)
         self.create_profiles(technicians)
         self.create_activity(technicians, jobs, employers)
-        self.stdout.write(self.style.SUCCESS("WrenchLink demo data is ready."))
-        self.stdout.write(f"Technician: marcus@demo.wrenchlink.io / {DEMO_PASSWORD}")
+        self.stdout.write(self.style.SUCCESS("US Auto Repair Jobs demo data is ready."))
+        self.stdout.write(f"Technician: marcus@demo.usautorepairjobs.com / {DEMO_PASSWORD}")
         self.stdout.write(f"Employer: hiring@apex.demo.io / {DEMO_PASSWORD}")
         self.stdout.write("Existing superusers were not changed.")
 
@@ -126,14 +126,14 @@ class Command(BaseCommand):
 
     def create_technicians(self, pools):
         rows = [
-            ("Marcus", "Thompson", "marcus@demo.wrenchlink.io", "Master Technician", 9, "Columbus", ["ASE Master", "EV/Hybrid", "Diagnostics"]),
-            ("Jordan", "Rivera", "jordan@demo.wrenchlink.io", "Collision / Body Technician", 7, "Columbus", ["I-CAR Gold", "Frame Work", "Paint Matching"]),
-            ("Darnell", "Adams", "darnell@demo.wrenchlink.io", "EV Specialist", 5, "Columbus", ["ASE L3 EV", "ADAS", "High Voltage"]),
-            ("Sofia", "Nguyen", "sofia@demo.wrenchlink.io", "Paint Technician", 6, "Columbus", ["Waterborne", "Color Match", "Downdraft"]),
-            ("Tyler", "Brooks", "tyler@demo.wrenchlink.io", "General Service Technician", 3, "Cleveland", ["ASE G1", "Brakes", "Suspension"]),
-            ("Maria", "Castillo", "maria@demo.wrenchlink.io", "Collision Estimator", 8, "Cleveland", ["I-CAR Platinum", "CCC One", "Supplements"]),
-            ("Andre", "Wallace", "andre@demo.wrenchlink.io", "Transmission Specialist", 12, "Atlanta", ["ASE A2", "CVT", "Rebuild"]),
-            ("Priya", "Patel", "priya@demo.wrenchlink.io", "Diesel / Fleet Technician", 6, "Dallas", ["ASE T-Series", "DPF", "Hydraulics"]),
+            ("Marcus", "Thompson", "marcus@demo.usautorepairjobs.com", "Master Technician", 9, "Columbus", ["ASE Master", "EV/Hybrid", "Diagnostics"]),
+            ("Jordan", "Rivera", "jordan@demo.usautorepairjobs.com", "Collision / Body Technician", 7, "Columbus", ["I-CAR Gold", "Frame Work", "Paint Matching"]),
+            ("Darnell", "Adams", "darnell@demo.usautorepairjobs.com", "EV Specialist", 5, "Columbus", ["ASE L3 EV", "ADAS", "High Voltage"]),
+            ("Sofia", "Nguyen", "sofia@demo.usautorepairjobs.com", "Paint Technician", 6, "Columbus", ["Waterborne", "Color Match", "Downdraft"]),
+            ("Tyler", "Brooks", "tyler@demo.usautorepairjobs.com", "General Service Technician", 3, "Cleveland", ["ASE G1", "Brakes", "Suspension"]),
+            ("Maria", "Castillo", "maria@demo.usautorepairjobs.com", "Collision Estimator", 8, "Cleveland", ["I-CAR Platinum", "CCC One", "Supplements"]),
+            ("Andre", "Wallace", "andre@demo.usautorepairjobs.com", "Transmission Specialist", 12, "Atlanta", ["ASE A2", "CVT", "Rebuild"]),
+            ("Priya", "Patel", "priya@demo.usautorepairjobs.com", "Diesel / Fleet Technician", 6, "Dallas", ["ASE T-Series", "DPF", "Hydraulics"]),
         ]
         technicians = {}
         for first, last, email, title, years, metro, skills in rows:
@@ -192,9 +192,9 @@ class Command(BaseCommand):
         return jobs
 
     def create_profiles(self, technicians):
-        marcus = technicians["marcus@demo.wrenchlink.io"]
-        jordan = technicians["jordan@demo.wrenchlink.io"]
-        darnell = technicians["darnell@demo.wrenchlink.io"]
+        marcus = technicians["marcus@demo.usautorepairjobs.com"]
+        jordan = technicians["jordan@demo.usautorepairjobs.com"]
+        darnell = technicians["darnell@demo.usautorepairjobs.com"]
 
         certifications = [
             (
@@ -334,11 +334,11 @@ class Command(BaseCommand):
         )
 
     def create_activity(self, technicians, jobs, employers):
-        marcus = technicians["marcus@demo.wrenchlink.io"]
-        jordan = technicians["jordan@demo.wrenchlink.io"]
-        darnell = technicians["darnell@demo.wrenchlink.io"]
-        sofia = technicians["sofia@demo.wrenchlink.io"]
-        priya = technicians["priya@demo.wrenchlink.io"]
+        marcus = technicians["marcus@demo.usautorepairjobs.com"]
+        jordan = technicians["jordan@demo.usautorepairjobs.com"]
+        darnell = technicians["darnell@demo.usautorepairjobs.com"]
+        sofia = technicians["sofia@demo.usautorepairjobs.com"]
+        priya = technicians["priya@demo.usautorepairjobs.com"]
         apex = employers["Apex Body & Auto"]
 
         marcus_ev, _ = Application.objects.update_or_create(

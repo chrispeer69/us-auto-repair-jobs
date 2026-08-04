@@ -78,8 +78,8 @@ def _moderation_notice(
     )
     if target_user.email:
         send_mail(
-            f"WrenchLink: {clean_subject[:120]}",
-            f"{clean_message}\n\nSign in to WrenchLink to review this update.",
+            f"US Auto Repair Jobs: {clean_subject[:120]}",
+            f"{clean_message}\n\nSign in to US Auto Repair Jobs to review this update.",
             settings.DEFAULT_FROM_EMAIL,
             [target_user.email],
             fail_silently=True,
@@ -101,8 +101,8 @@ def _send_verification(request, user):
         reverse("accounts:verify_email", kwargs={"uidb64": uid, "token": token})
     )
     send_mail(
-        "Verify your WrenchLink email",
-        f"Verify your WrenchLink account:\n\n{url}\n\nIf you did not register, ignore this message.",
+        "Verify your US Auto Repair Jobs email",
+        f"Verify your US Auto Repair Jobs account:\n\n{url}\n\nIf you did not register, ignore this message.",
         None,
         [user.email],
     )
@@ -238,7 +238,7 @@ def operations_user_action(request, user_id, action):
         user.is_active = True
         user.save(update_fields=["is_active"])
         notice = request.POST.get("message", "").strip()[:600] or (
-            "Your WrenchLink account has been reactivated. You can sign in and use the platform again."
+            "Your US Auto Repair Jobs account has been reactivated. You can sign in and use the platform again."
         )
         _moderation_notice(
             request.user, user, "account_activated", "Account reactivated", notice
@@ -266,7 +266,7 @@ def operations_user_action(request, user_id, action):
             user,
             "email_verified",
             "Email verification completed",
-            "WrenchLink staff verified the email address on your account.",
+            "US Auto Repair Jobs staff verified the email address on your account.",
         )
         messages.success(request, "User email marked as verified.")
     else:
@@ -355,7 +355,7 @@ def operations_profile_action(request, kind, object_id, action):
             profile.rejection_reason = notice
         else:
             notice = (
-                f"{profile.company_name} has been verified for use on WrenchLink."
+                f"{profile.company_name} has been verified for use on US Auto Repair Jobs."
             )
             profile.verification_status = EmployerProfile.VerificationStatus.VERIFIED
             profile.rejection_reason = ""
@@ -415,7 +415,7 @@ def operations_job_status(request, job_id):
     job.save(update_fields=["status", "updated_at"])
     status_label = dict(Job.Status.choices)[status]
     notice = request.POST.get("message", "").strip()[:600] or (
-        f'WrenchLink staff changed the status of "{job.title}" to {status_label}.'
+        f'US Auto Repair Jobs staff changed the status of "{job.title}" to {status_label}.'
     )
     _moderation_notice(
         request.user,
@@ -448,7 +448,7 @@ def operations_send_message(request, user_id):
         message_text,
         link=reverse("accounts:dashboard"),
     )
-    messages.success(request, "Message sent in WrenchLink and by email when available.")
+    messages.success(request, "Message sent in US Auto Repair Jobs and by email when available.")
     return redirect(f"{reverse('accounts:operations')}#users")
 
 

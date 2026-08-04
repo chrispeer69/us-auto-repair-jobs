@@ -190,7 +190,7 @@ EMAIL_USE_TLS = env_bool("EMAIL_USE_TLS", True)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = (
-    env("DEFAULT_FROM_EMAIL") or EMAIL_HOST_USER or "noreply@wrenchlink.io"
+    env("DEFAULT_FROM_EMAIL") or EMAIL_HOST_USER or "noreply@usautorepairjobs.com"
 )
 
 ADMIN_URL = env("DJANGO_ADMIN_URL", "platform-control/").strip("/")

@@ -152,7 +152,7 @@ class OperationsPanelTests(TestCase):
     def test_django_admin_links_to_branded_control_panel(self):
         self.client.force_login(self.staff)
         response = self.client.get(reverse("admin:index"))
-        self.assertContains(response, "WrenchLink Control Panel")
+        self.assertContains(response, "US Auto Repair Jobs Control Panel")
         self.assertContains(response, reverse("accounts:operations"))
 
     def test_non_staff_cannot_access_operations_panel(self):

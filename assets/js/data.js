@@ -1,5 +1,5 @@
 /* ============================================================
-   WRENCHLINK — seed data + localStorage store
+   US AUTO REPAIR JOBS — seed data + localStorage store
    ============================================================ */
 
 const WL_SEED_JOBS = [

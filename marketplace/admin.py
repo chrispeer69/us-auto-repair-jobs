@@ -85,6 +85,6 @@ admin.site.register(
         NotificationPreference,
     ]
 )
-admin.site.site_header = "WrenchLink Administration"
-admin.site.site_title = "WrenchLink Admin"
+admin.site.site_header = "US Auto Repair Jobs Administration"
+admin.site.site_title = "US Auto Repair Jobs Admin"
 admin.site.index_title = "Platform management"

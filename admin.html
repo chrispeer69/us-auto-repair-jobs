@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Console — WrenchLink</title>
+<title>Admin Console — US Auto Repair Jobs</title>
 <link rel="icon" href="assets/img/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -56,14 +56,14 @@ if (!WL_DEV && (!_u || _u.type !== 'admin')) {
     <div class="page-head"><div class="section-tag">Restricted</div><h1>Admin <em>sign-in</em></h1>
     <p>This is the platform master console. Sign in with an administrator account to continue.</p></div>
     <div class="panel" style="max-width:440px;">
-      <div class="form-group"><label class="form-label">Admin Email</label><input class="form-input" id="adm-email" value="admin@wrenchlink.io"></div>
+      <div class="form-group"><label class="form-label">Admin Email</label><input class="form-input" id="adm-email" value="admin@usautorepairjobs.com"></div>
       <div class="form-group" style="margin-top:0.75rem;"><label class="form-label">Password</label><input class="form-input" id="adm-pass" type="password" value="demo"></div>
       <button class="btn-sm" style="margin-top:1rem;" onclick="adminLogin()">Enter Console →</button>
     </div>`;
 }
 function adminLogin(){
   const e=document.getElementById('adm-email').value.trim().toLowerCase();
-  if(e!=='admin@wrenchlink.io'){ showToast('Use admin@wrenchlink.io for the demo.', true); return; }
+  if(e!=='admin@usautorepairjobs.com'){ showToast('Use admin@usautorepairjobs.com for the demo.', true); return; }
   WL.set({ user:{ type:'admin', name:'Platform Admin', email:e } });
   location.reload();
 }
