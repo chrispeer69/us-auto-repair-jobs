@@ -86,6 +86,18 @@ nav {
 .btn-nav-fill { padding: 0.5rem 1.05rem; background: var(--primary); border: 1px solid var(--primary); color: #fff; font-size: 0.88rem; font-weight: 600; cursor: pointer; border-radius: var(--radius-sm); transition: all 0.16s; text-decoration: none; }
 .btn-nav-fill:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
 
+/* Demo tour launcher — top-right on every page */
+.btn-nav-tour {
+  display: inline-flex; align-items: center; gap: 0.42rem;
+  padding: 0.5rem 0.95rem; border: 1px solid var(--accent);
+  background: var(--accent-soft); color: var(--accent-hover);
+  font-size: 0.86rem; font-weight: 600; cursor: pointer;
+  border-radius: var(--radius-sm); text-decoration: none;
+  transition: all 0.16s; white-space: nowrap;
+}
+.btn-nav-tour:hover { background: var(--accent); color: #fff; }
+.btn-nav-tour .tour-play { font-size: 0.68rem; line-height: 1; }
+
 .nav-user { display: none; align-items: center; gap: 0.6rem; }
 .nav-user.show { display: flex; }
 .nav-user-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; color: #fff; background: var(--primary); }
@@ -408,6 +420,26 @@ table.data-table tr:hover td { background: var(--surface); }
 .link-accent:hover { text-decoration: underline; }
 
 /* ── RESPONSIVE ── */
+/* ── DEMO ACCESS CARD (remove with the demo) ── */
+.demo-access { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 3.5rem 2rem; }
+.demo-inner { max-width: var(--maxw); margin: 0 auto; }
+.demo-head { text-align: center; margin-bottom: 2rem; }
+.demo-pill { display: inline-block; padding: 0.22rem 0.7rem; background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; border-radius: 20px; margin-bottom: 0.85rem; }
+.demo-head h2 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; color: var(--primary); }
+.demo-head p { max-width: 620px; margin: 0.6rem auto 0; color: var(--text-dim); font-size: 0.95rem; }
+.demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.demo-cred { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; box-shadow: var(--shadow-1); display: flex; flex-direction: column; }
+.demo-cred:first-child { border-color: var(--accent); box-shadow: var(--shadow-2); }
+.demo-role { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.9rem; }
+.demo-role svg { width: 17px; height: 17px; }
+.demo-cred dl { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.75rem; align-items: baseline; margin-bottom: 1.1rem; }
+.demo-cred dt { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.demo-cred dd { min-width: 0; }
+.demo-cred code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--text); background: var(--surface-2); border: 1px solid var(--line); border-radius: 5px; padding: 0.14rem 0.42rem; overflow-wrap: anywhere; }
+.demo-cred .btn-sm { margin-top: auto; justify-content: center; }
+.demo-foot { text-align: center; margin-top: 1.6rem; font-size: 0.88rem; color: var(--text-dim); }
+.demo-foot strong { color: var(--accent-hover); }
+
 @media (max-width: 1024px) {
   .app-layout { grid-template-columns: 1fr; }
   .app-rail { position: static; }
@@ -428,6 +460,8 @@ table.data-table tr:hover td { background: var(--surface); }
   .city-grid { grid-template-columns: repeat(2, 1fr); }
   .employer-panel { grid-template-columns: 1fr; }
   .emp-sidebar { display: none; }
+  .demo-grid { grid-template-columns: 1fr; }
+  .btn-nav-tour { padding: 0.45rem 0.7rem; font-size: 0.8rem; }
 }
 @media (max-width: 600px) {
   .features-grid { grid-template-columns: 1fr; }

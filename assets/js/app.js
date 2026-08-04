@@ -5,9 +5,11 @@
 
 /* ============================================================
    DEV MODE — open access while building.
-   Set WL_DEV = false before public launch to restore sign-in guards.
+   Set WL_DEV = true to bypass sign-in guards and show the dev toolbar.
+   OFF for public launch: guards active, demo access is via the
+   demo credentials card on index.html.
    ============================================================ */
-const WL_DEV = true;
+const WL_DEV = false;
 
 function wlDemoDate(monthsAgo) {
   const d = new Date(); d.setMonth(d.getMonth() - monthsAgo);
@@ -203,9 +205,40 @@ function wlLogout() {
   setTimeout(() => window.location.href = 'index.html', 500);
 }
 
+/* ---------- DEMO ACCESS ----------
+   Public demo credentials, surfaced on index.html. Remove the
+   #wl-demo-card block from index.html (and this helper) before
+   the platform goes commercial. */
+const WL_DEMO_ACCOUNTS = {
+  tech:     { email: 'marcus@demo.usautorepairjobs.com', pass: 'demo', page: 'vault.html',    label: 'Technician' },
+  employer: { email: 'hiring@apex.demo.io',              pass: 'demo', page: 'employer.html', label: 'Employer'   },
+  admin:    { email: 'admin@usautorepairjobs.com',       pass: 'demo', page: 'admin.html',    label: 'Admin'      },
+};
+
+function wlDemoSignIn(role) {
+  const acct = WL_DEMO_ACCOUNTS[role];
+  if (!acct) return;
+  const user = wlDevEnsure(role);          // provision + activate the demo identity
+  user.email = acct.email;
+  WL.save();
+  showToast(`Signed in as the demo ${acct.label.toLowerCase()}.`);
+  setTimeout(() => window.location.href = acct.page, 500);
+}
+
+/* Launcher for the guided tour. tour.js is an ES module, so it may
+   still be parsing when the nav renders — hold the click briefly. */
+function wlLaunchTour(attempt) {
+  attempt = attempt || 0;
+  if (typeof window.wlStartTour === 'function') { window.wlStartTour(); return; }
+  if (attempt > 40) { showToast('Demo tour failed to load.', true); return; }
+  setTimeout(() => wlLaunchTour(attempt + 1), 100);
+}
+
 /* ---------- NAV (shared) ---------- */
 function renderNav(active) {
   const user = WL.get().user;
+  // Guided product demo (react-joyride) — top-right on every page.
+  const tourBtn = `<a href="#" class="btn-nav-tour" id="wl-tour-btn" onclick="wlLaunchTour();return false;" title="Take a guided tour of the platform"><span class="tour-play">▶</span> Demo Tour</a>`;
   let ctas;
   if (user) {
     const initials = (user.name || 'U').split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
@@ -237,7 +270,7 @@ function renderNav(active) {
     <a href="index.html" class="logo">US Auto Repair <span>Jobs</span></a>
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">☰</button>
     <div class="nav-links">${linkHtml}</div>
-    <div class="nav-ctas">${ctas}</div>`;
+    <div class="nav-ctas">${tourBtn}${ctas}</div>`;
   const existing = document.querySelector('nav');
   if (existing) existing.replaceWith(nav); else document.body.prepend(nav);
 

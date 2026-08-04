@@ -23,7 +23,7 @@ The repo is Railway-ready:
 - `package.json` → `npm start` runs `server.js` (a zero-dependency Node static server that binds `process.env.PORT`).
 - `Procfile` → `web: npm start`.
 
-On Railway: **New Project → Deploy from GitHub → chrispeer69/Wrenchlink**. Nixpacks detects Node and runs `npm start` automatically. No build step or env vars required.
+On Railway: **New Project → Deploy from GitHub → chrispeer69/us-auto-repair-jobs**. Nixpacks detects Node and runs `npm start` automatically. No build step or env vars required.
 
 ## Pages
 
@@ -38,6 +38,7 @@ On Railway: **New Project → Deploy from GitHub → chrispeer69/Wrenchlink**. N
 | City Pools | `city-pools.html` | Browse metro talent markets by region |
 | Pricing | `pricing.html` | Technician Solo $9.95/mo; employer Starter/Pro/Enterprise |
 | Legal | `legal.html` | Terms, Privacy, Cookies, Acceptable Use, Billing & Refunds, Disclaimers |
+| Explainer | `explainer.html` | Long-form sales/pitch page — the cost-of-hiring case against job-board pricing |
 
 ## Billing model
 
@@ -45,18 +46,41 @@ On Railway: **New Project → Deploy from GitHub → chrispeer69/Wrenchlink**. N
 - **Employers** — Starter $99, Pro $249, Enterprise custom, per month.
 - Recurring engine (`assets/js/billing.js`) accrues one invoice per month from signup, auto-settles on a saved card, supports plan change / cancel / reactivate, and a "Advance billing month" demo control to watch recurring charges accrue. Invoices are printable (Print / Save PDF).
 
-## Demo logins (any password)
+## Demo access
 
-- **Technician** — *Get Started → Tech* (or Sign In as Technician) → lands in **My Vault**.
-- **Employer** — *Get Started → Employer* → **Employer Dashboard**.
-- **Admin** — Sign In with **`admin@usautorepairjobs.com`** → **Admin Console**.
+Sign-in guards are live (`WL_DEV = false` in `assets/js/app.js`), so the demo runs on
+published credentials instead. The **Try the full platform** card on `index.html` lists all
+three and signs you straight in — passwords are not actually validated.
+
+| Role | Username | Password | Lands on |
+|------|----------|----------|----------|
+| Admin | `admin@usautorepairjobs.com` | `demo` | Admin Console |
+| Technician | `marcus@demo.usautorepairjobs.com` | `demo` | My Vault |
+| Employer | `hiring@apex.demo.io` | `demo` | Employer Dashboard |
+
+> **Before selling:** remove the `#wl-demo-card` section from `index.html` and the
+> `WL_DEMO_ACCOUNTS` / `wlDemoSignIn` block in `assets/js/app.js`.
+
+## Guided tour
+
+**▶ Demo Tour** in the top-right corner of every page runs a 23-step walkthrough built on
+[react-joyride](https://github.com/gilbarbara/react-joyride) (forked to
+[`chrispeer69/react-joyride`](https://github.com/chrispeer69/react-joyride)). It spans six
+pages — landing → jobs → vault → employer → billing → admin — signing in the right demo
+identity and resuming automatically at each handoff. Progress is kept in `localStorage`
+under `wl_tour_v1`.
+
+React, ReactDOM and react-joyride are **vendored** into `assets/vendor/` as ES modules, so
+there is still no build step and no runtime CDN call. Steps whose target element is missing
+are skipped rather than stranding the tour. Note `server.js` must serve `.mjs` as
+`text/javascript` — browsers refuse to execute modules under any other MIME type.
 
 ## Structure
 
 ```
 site/
   index.html jobs.html vault.html employer.html billing.html
-  admin.html city-pools.html pricing.html legal.html
+  admin.html city-pools.html pricing.html legal.html explainer.html
   server.js package.json Procfile        # Railway / Node hosting
   assets/
     css/styles.css     design system (light + navy, Inter)
@@ -65,6 +89,8 @@ site/
     js/billing.js      subscriptions + recurring invoicing engine
     js/app.js          nav, auth modal, toast, cookie consent, route guards
     js/footer.js       shared footer
+    js/tour.js         guided product demo (react-joyride)
+    vendor/            react + react-dom + react-joyride, vendored as ESM
     img/favicon.ico
 ```
 

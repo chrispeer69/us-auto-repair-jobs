@@ -34,6 +34,54 @@
   </div>
 </section>
 
+<!--
+  DEMO ACCESS CARD
+  Public demo credentials. REMOVE THIS ENTIRE SECTION before the
+  platform goes commercial — see also WL_DEMO_ACCOUNTS in assets/js/app.js.
+-->
+<section class="demo-access" id="wl-demo-card">
+  <div class="demo-inner">
+    <div class="demo-head">
+      <span class="demo-pill">Demo</span>
+      <h2>Try the full platform — no sign-up</h2>
+      <p>Every role is unlocked with the credentials below. Nothing is real: all data lives in your browser and resets when you clear it.</p>
+    </div>
+
+    <div class="demo-grid">
+      <div class="demo-cred">
+        <div class="demo-role"><span data-ic="user"></span> Admin</div>
+        <dl>
+          <dt>Username</dt><dd><code>admin@usautorepairjobs.com</code></dd>
+          <dt>Password</dt><dd><code>demo</code></dd>
+        </dl>
+        <button class="btn-sm" onclick="wlDemoSignIn('admin')">Enter Admin Console →</button>
+      </div>
+
+      <div class="demo-cred">
+        <div class="demo-role"><span data-ic="wrench"></span> Technician</div>
+        <dl>
+          <dt>Username</dt><dd><code>marcus@demo.usautorepairjobs.com</code></dd>
+          <dt>Password</dt><dd><code>demo</code></dd>
+        </dl>
+        <button class="btn-sm ghost" onclick="wlDemoSignIn('tech')">Open My Vault →</button>
+      </div>
+
+      <div class="demo-cred">
+        <div class="demo-role"><span data-ic="building"></span> Employer</div>
+        <dl>
+          <dt>Username</dt><dd><code>hiring@apex.demo.io</code></dd>
+          <dt>Password</dt><dd><code>demo</code></dd>
+        </dl>
+        <button class="btn-sm ghost" onclick="wlDemoSignIn('employer')">Open Dashboard →</button>
+      </div>
+    </div>
+
+    <p class="demo-foot">
+      Prefer a walkthrough? Hit <strong>▶ Demo Tour</strong> in the top-right corner for a guided tour of all six screens.
+    </p>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section class="how-it-works" id="how-it-works">
   <div class="section-tag">Process</div>
@@ -190,6 +238,7 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 <script src="assets/js/footer.js"></script>
+<script type="module" src="assets/js/tour.js"></script>
 <script>
 renderNav('how');
 renderFooter();
